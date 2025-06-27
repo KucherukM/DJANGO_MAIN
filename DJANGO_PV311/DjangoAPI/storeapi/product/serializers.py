@@ -2,6 +2,8 @@ from rest_framework import serializers
 from .models import Category, User
 
 class CategorySerializer(serializers.ModelSerializer):
+    image = serializers.ImageField(required=False, allow_null=True, use_url=True)
+    
     class Meta:
         model = Category
         fields = ['id', 'name', 'slug', 'description', 'created_at', 'updated_at', 'image']

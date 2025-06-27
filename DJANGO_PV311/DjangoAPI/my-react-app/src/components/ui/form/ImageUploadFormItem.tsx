@@ -32,15 +32,26 @@ const ImageUploadFormItem: React.FC<ImageUploadFormItemProps> = ({
             return false;
         },
         showUploadList: false,
+        onChange: (info) => {
+            if (info.file.status === 'removed') {
+                setPreviewUrl(null);
+            }
+        },
     };
 
     return (
         <Form.Item
             label={label}
             name={name}
-            getValueFromEvent={(e) =>
-                e?.file?.originFileObj || e?.fileList?.[0]?.originFileObj || null
-            }
+            getValueFromEvent={(e) => {
+                if (e?.file?.originFileObj) {
+                    return e.file.originFileObj;
+                }
+                if (e?.fileList?.[0]?.originFileObj) {
+                    return e.fileList[0].originFileObj;
+                }
+                return null;
+            }}
         >
             <>
                 {!previewUrl ? (

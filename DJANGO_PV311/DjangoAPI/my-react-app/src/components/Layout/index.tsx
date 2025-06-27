@@ -75,9 +75,6 @@ const Layout : React.FC = () => {
             // Формуємо повний URL для фотографії
             const photoUrl = user.photo.startsWith('http') ? user.photo : `${APP_ENV.API_BASE_URL}${user.photo}`;
             
-            // Тестуємо URL
-            testPhotoUrl(photoUrl);
-            
             return (
                 <div className={`${sizeClasses} rounded-full relative`}>
                     <img 
@@ -107,14 +104,6 @@ const Layout : React.FC = () => {
                             {user?.username?.charAt(0).toUpperCase() || 'U'}
                         </span>
                     </div>
-                    {/* Test button */}
-                    <button
-                        onClick={() => openPhotoInNewTab(photoUrl)}
-                        className="absolute -top-1 -right-1 bg-blue-500 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center hover:bg-blue-600"
-                        title="Test photo URL"
-                    >
-                        T
-                    </button>
                 </div>
             );
         }

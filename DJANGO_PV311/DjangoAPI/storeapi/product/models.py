@@ -31,5 +31,6 @@ class Category(models.Model):
 class User(AbstractUser):
     photo = models.ImageField(upload_to='user_photos/', null=True, blank=True)
     phone = models.CharField(max_length=20, unique=True, null=True, blank=True, verbose_name='Phone number')
+    email = models.EmailField(null=True, blank=True)
 
 
